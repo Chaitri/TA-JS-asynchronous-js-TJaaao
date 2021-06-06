@@ -1,19 +1,27 @@
 1. Create a promise. Have it resolve with a value of `Promise Resolved!` in resolve after a delay of 1000ms, using `setTimeout`. Print the contents of the promise after it has been resolved by passing `console.log` to `.then`
 
 ```js
-// Your code
+let aPromise = new Promise((resolve, reject) => {
+  setTimeout(() => resolve(`Promise Resolved!`), 1000);
+}).then((value) => console.log(value));
 ```
 
 2. Create another promise. Now have it reject with a value of `Rejected Promise!` without using `setTimeout`. Print the contents of the promise after it has been rejected by passing console.log to `.catch`
 
 ```js
-// Your code
+let anotherPromise = new Promise((resolve, reject) => {
+  reject(`Rejected Promise!`);
+}).catch((error) => console.error(error));
 ```
 
 3. Create another promise. Now have it reject with a value of `Rejected Promise!` without using `setTimeout`. Print the contents of the promise after it has been rejected by passing console.log to `.catch` and also use `.finally` to log message `Promise Settled!`.
 
 ```js
-// Your code
+let anotherPromise = new Promise((resolve, reject) => {
+  reject(`Rejected Promise!`);
+})
+  .catch((error) => console.error(error))
+  .finally(() => console.log(`Promise Settled!`));
 ```
 
 4. What will be the output of the code below.
@@ -30,10 +38,21 @@ Promise.resolve().then(() => console.log('C'));
 console.log('D');
 ```
 
+Output:
+
+- A
+- D
+- C
+- B
+
 5. Write a function named `wait` that accepts `time` in ms returns a promise. The promise gets resolved after given time.
 
 ```js
-// Your code
+function wait(time) {
+  return new Promise((resolve, reject) => {
+    setTimeout(resolve, time);
+  });
+}
 ```
 
 6. Do the following:
@@ -46,7 +65,17 @@ console.log('D');
 - Catch the error using `.catch`
 
 ```js
-// Your code
+let a = new Promise((resolve, reject) => {
+  resolve(21);
+})
+  .then((value) => value + 10)
+  .then((value) => value + 100)
+  .then((value) => {
+    if (value > 100) {
+      throw new Error('Value greater than 100');
+    }
+  })
+  .catch((error) => console.error(error));
 ```
 
 7. Do the following:
@@ -58,7 +87,16 @@ console.log('D');
 - Use `.then` and log the value
 
 ```js
-// Your code
+let samplePromise = new Promise((res, rej) => res(['A']))
+  .then((value) => value.concat('B'))
+  .then((value) => {
+    let obj = {};
+    for (let i = 0; i < value.length; i++) {
+      obj[i] = value[i];
+    }
+    return obj;
+  })
+  .then((value) => console.log(value));
 ```
 
 8. Do the following:
@@ -69,7 +107,19 @@ console.log('D');
 - Chain `.then` on above and return `4` also check the value you get access to by logging
 
 ```js
-// Your code
+let first = Promise.resolve(1)
+  .then((value) => {
+    console.log(value);
+    return 2;
+  })
+  .then((value) => {
+    console.log(value);
+    return 3;
+  })
+  .then((value) => {
+    console.log(value);
+    return 4;
+  });
 ```
 
 9. Do the following:
@@ -80,10 +130,27 @@ console.log('D');
 - Use `.then` on `first` and return `4` also check the value you get access to by logging
 
 ```js
-// Your code
+let first = new Promise((res, rej) => {
+  res(1);
+});
+first.then((val) => {
+  console.log(val);
+  return 2;
+});
+first.then((val) => {
+  console.log(val);
+  return 3;
+});
+first.then((val) => {
+  console.log(val);
+  return 4;
+});
 ```
 
 10. Try to understand the difference between the problem 8 and 9. Write your observation.
+
+In 8, we are creating a promise chain by using .then(). This allows us to use the previous value which was returned, and modify it as we wish.
+In 9, we are not creating a promise chain, instead we are using .then on the same Promise object `first`.
 
 11. Do the following
 
@@ -93,5 +160,13 @@ console.log('D');
 - Use `.then` to log the value
 
 ```js
-// Your code
+let samplePromise = new Promise((res, rej) => res('John'))
+  .then((val) => new Promise((res, rej) => res('Arya')))
+  .then((val) => {
+    console.log(val);
+    return new Promise((res, rej) => {
+      setTimeout(res('Bran'), 2000);
+    });
+  })
+  .then((val) => console.log(val));
 ```
