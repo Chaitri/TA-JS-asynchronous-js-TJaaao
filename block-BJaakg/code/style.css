@@ -1,0 +1,130 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  line-height: 1.7;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+header h1 {
+  text-align: center;
+  font-size: 3rem;
+}
+
+main {
+  text-align: center;
+}
+
+.books {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  position: relative;
+}
+
+.book-item {
+  padding: 1rem 2rem;
+  box-shadow: 5px 5px 20px rgba(0, 0, 68, 0.4);
+  border-radius: 1rem;
+  text-align: left;
+}
+
+.title {
+  text-align: center;
+  color: rgb(182, 7, 36);
+}
+
+.author {
+  font-weight: 700;
+  color: rgb(0, 102, 68);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.5rem;
+  border: none;
+  background-color: rgb(21, 0, 99);
+  border-radius: 10px;
+  margin: 1rem;
+}
+
+a.btn {
+  color: rgb(255, 255, 255);
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+}
+
+.btnDiv {
+  text-align: center;
+}
+
+.loader {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 8px solid rgb(211, 211, 211);
+  border-top: 8px solid rgb(3, 3, 83);
+  animation: spin 2s linear infinite;
+  margin: 3rem auto;
+}
+
+.modal-loader {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 8px solid rgb(255, 255, 255);
+  border-top: 8px solid rgb(7, 33, 90);
+  animation: spin 2s linear infinite;
+  margin: 3rem auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.error {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: red;
+}
+
+.modal {
+  position: absolute;
+  background-color: rgba(0, 0, 68, 1);
+  width: 100%;
+  border: 1px solid black;
+  display: none;
+  text-align: left;
+  color: white;
+  padding: 2rem;
+}
+
+.modal .close {
+  position: absolute;
+  right: 20px;
+  top: 0;
+  cursor: grab;
+  font-weight: 700;
+  color: white;
+}
+
+.modal .character {
+  margin: 3rem 0;
+  border: 1px solid bisque;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+}
