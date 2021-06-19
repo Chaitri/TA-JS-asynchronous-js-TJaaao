@@ -28,6 +28,33 @@ function addToDo(event) {
   }
 }
 
+function handleEdit(event, id) {
+  let input = document.createElement('input');
+  input.value = event.target.innerText;
+  let p = event.target;
+  let parent = event.target.parentElement;
+  parent.replaceChild(input, p);
+
+  input.addEventListener('keyup', (event) => {
+    if (event.keyCode === 13 && event.target.value !== '') {
+      let toDoItem = {
+        todo: {
+          title: event.target.value,
+        },
+      };
+      fetch(baseUrl + id, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(toDoItem),
+      })
+        .then(() => getToDoList())
+        .then((resp) => renderItems(resp, rootElm));
+    }
+  });
+}
+
 function removeItem(event) {
   let id = event.target.dataset.id;
   fetch(baseUrl + id, {
@@ -72,7 +99,7 @@ function getToDoList() {
 function renderItems(data, rootElm) {
   rootElm.innerHTML = '';
 
-  data.forEach((item, index) => {
+  data.forEach((item) => {
     let li = document.createElement('li');
     let div = document.createElement('div');
     let checkBox = document.createElement('input');
@@ -86,6 +113,9 @@ function renderItems(data, rootElm) {
     checkBox.checked = item.isCompleted;
 
     p.innerText = item.title;
+    p.addEventListener('dblclick', () => {
+      handleEdit(event, item._id);
+    });
 
     div.append(checkBox, p);
     div.classList.add('todo_details');
