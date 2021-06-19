@@ -1,0 +1,217 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* CUSTOM STYLES */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  line-height: 1.5;
+  background-color: cornsilk;
+  font-family: 'PT Sans', sans-serif;
+}
+
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* HEADER */
+
+.header {
+  padding: 2rem 0;
+  text-align: center;
+  font-size: 3rem;
+  color: crimson;
+}
+
+.todo_input {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 15px;
+  border: 1px solid salmon;
+  outline: none;
+  /* margin-bottom: 2rem; */
+}
+
+.todo_input::placeholder {
+  color: rgb(175, 174, 174);
+  font-size: 0.8rem;
+}
+
+.todos {
+  padding-top: 2rem;
+}
+
+.todo_item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.todo_details p {
+  display: inline-block;
+}
+
+.check {
+  margin-right: 1rem;
+}
+
+.check:checked ~ p {
+  text-decoration: line-through;
+}
+
+.delete {
+  color: crimson;
+}
+
+.delete:hover {
+  color: red;
+}
+
+.filter {
+  display: flex;
+  justify-content: center;
+  display: none;
+  cursor: pointer;
+}
+
+.filter li {
+  margin: 0 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+}
+
+.filter li:hover {
+  border: 1px solid rgb(252, 180, 180);
+}

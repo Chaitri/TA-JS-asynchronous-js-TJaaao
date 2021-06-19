@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/7d51f361a6.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>TODO Application</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1>To Do</h1>
+    </header>
+    <main class="container">
+      <input type="text" class="todo_input" placeholder="Enter item" />
+      <ul class="todos"></ul>
+      <ul class="filter">
+        <li id="all">All</li>
+        <li id="active">Active</li>
+        <li id="completed">Completed</li>
+        <!-- <li id="clear">Clear Completed</li> -->
+      </ul>
+    </main>
+    <script src="./index.js"></script>
+  </body>
+</html>
